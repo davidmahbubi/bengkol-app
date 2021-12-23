@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'src/pages/auth/login.dart';
+import 'package:get_it/get_it.dart';
+import 'src/databases/user_database.dart';
+
+final getIt = GetIt.instance;
 
 void main() {
+  getIt.registerSingleton<UserDatabase>(UserDatabase());
   runApp(MyApp());
 }
 
