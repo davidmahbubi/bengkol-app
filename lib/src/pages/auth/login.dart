@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:bengkol_app/main.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import './register.dart';
 import './../../models/user.dart';
 import './../../components/auth/auth_card.dart';
 import './../../databases/user_database.dart';
+import './../homepage.dart';
 
 class LoginPage extends StatelessWidget {
 
@@ -33,6 +35,8 @@ class Login extends StatefulWidget {
 }
 
 class LoginState extends State<Login> {
+
+  final GetStorage box = GetStorage();
 
   bool loginLoadingState = false;
 
@@ -97,9 +101,14 @@ class LoginState extends State<Login> {
                       User? existUser = userDatabase.getUserByUsername(usernameController.text);
 
                       if (existUser != null && passwordController.text == existUser.password) {
+
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('User Ketemu ! Selamat datang ${existUser.name}'))
+                          SnackBar(content: Text('Selamat datang ${existUser.name}')),
                         );
+
+                        box.write('active_user', existUser.name);
+
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage()));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('User tidak ditemukan !'))
