@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
-import './service.dart';
+import 'instant_service.dart';
+import 'nearby_repair_shot.dart';
+import 'service.dart';
+import 'order_list.dart';
 
 class Homepage extends StatelessWidget {
 
@@ -9,9 +12,9 @@ class Homepage extends StatelessWidget {
 
   List menuList = [
     [Icons.car_repair, 'Servis Kendaraan', ServicePage()],
-    [Icons.near_me, 'Layanan Instan'],
-    [Icons.settings, 'Bengkel Terdekat'],
-    [Icons.phone, 'Contact Us'],
+    [Icons.near_me, 'Layanan Instan', InstantServicePage()],
+    [Icons.settings, 'Bengkel Terdekat', NearbyRepairShopPage()],
+    [Icons.double_arrow, 'Daftar Order', OrderListPage()],
   ];
 
   Homepage() {
@@ -137,7 +140,7 @@ class Homepage extends StatelessWidget {
                                 ],
                               ),
                               onTap: () {
-                                if (menuList[0][2] != null) {
+                                if (menuList[index][2] != null) {
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => menuList[index][2]));
                                 }
                               },
