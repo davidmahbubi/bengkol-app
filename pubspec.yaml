@@ -65,6 +65,7 @@ flutter:
     - assets/images/service_head_icon.svg
     - assets/images/destination_ic.svg
     - assets/images/thought.svg
+    - assets/images/car.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
