@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 import 'instant_service.dart';
-import 'nearby_repair_shot.dart';
+import 'nearby_repair_shop.dart';
 import 'service.dart';
 import 'order_list.dart';
 

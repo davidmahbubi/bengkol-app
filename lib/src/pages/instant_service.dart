@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -32,10 +33,10 @@ class InstantServiceState extends State<InstantServicePage> {
   }
 
   List servicesList = [
-    [Icons.settings, 'Kompa Ban'],
-    [Icons.settings, 'Tambal Ban'],
-    [Icons.settings, 'Ganti Oli / Pelumas'],
-    [Icons.settings, 'Isi Bahan Bakar']
+    [FaIcon(FontAwesomeIcons.tools), 'Kompa Ban'],
+    [FaIcon(FontAwesomeIcons.tools), 'Tambal Ban'],
+    [FaIcon(FontAwesomeIcons.oilCan), 'Ganti Oli / Pelumas'],
+    [FaIcon(FontAwesomeIcons.gasPump), 'Isi Bahan Bakar']
   ];
 
   Widget build(BuildContext context) {
@@ -80,10 +81,7 @@ class InstantServiceState extends State<InstantServicePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
-                                Icon(
-                                  servicesList[index][0],
-                                  size: 35,
-                                ),
+                                servicesList[index][0],
                                 SizedBox(height: 20),
                                 Text(
                                   '${servicesList[index][1]}',
