@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import './services/motorcycle_service.dart';
 
 class ServicePage extends StatefulWidget {
 
@@ -14,7 +15,7 @@ class ServicePage extends StatefulWidget {
 class ServiceState extends State<ServicePage> {
 
   List vehicleTypes = [
-    [FaIcon(FontAwesomeIcons.motorcycle), 'Sepeda Motor'],
+    [FaIcon(FontAwesomeIcons.motorcycle), 'Sepeda Motor', MotorcycleService()],
     [FaIcon(FontAwesomeIcons.car), 'Mobil'],
     [FaIcon(FontAwesomeIcons.truckPickup), 'Pick Up'],
     [FaIcon(FontAwesomeIcons.truck), 'Truk'],
@@ -91,6 +92,7 @@ class ServiceState extends State<ServicePage> {
                                   ],
                                 ),
                                 onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => MotorcycleService()));
                                 },
                               ),
                             );
