@@ -3,4 +3,15 @@ import 'package:flutter/cupertino.dart';
 
 class Motor extends Vehicle {
   Motor(BuildContext context) : super(context);
+  
+  void gantiOli() {}
+
+  void isiBahanbakar() {}
+
+  void pompaBan() {}
+
+  void macet() {}
+
+
+  
 }

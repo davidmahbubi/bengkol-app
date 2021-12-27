@@ -8,7 +8,7 @@ class Vehicle {
 
   void gantiOli() {}
 
-  void kompaBan() {}
+  void pompaBan() {}
 
   void tambalBan() {}
 
