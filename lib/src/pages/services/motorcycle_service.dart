@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class MotorcycleService extends StatefulWidget {
   @override
@@ -75,7 +76,30 @@ class MotorcycleServiceState extends State<MotorcycleService> {
                           margin: EdgeInsets.only(top: 20),
                           child: InkWell(
                               onTap: () {
-                                print('Hello world');
+                                Alert(
+                                    context: context,
+                                    title: "Servis Mesin Ringan",
+                                    content: Column(
+                                      children: <Widget>[
+                                        TextField(
+                                          decoration: InputDecoration(
+                                            icon: Icon(Icons.star),
+                                            labelText: 'Plat Nomor',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    buttons: [
+                                      DialogButton(
+                                        onPressed: () => Navigator.pop(context),
+                                        child: Text(
+                                          "Order",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20),
+                                        ),
+                                      )
+                                    ]).show();
                               },
                               child: Row(
                                 children: [
@@ -108,6 +132,15 @@ class MotorcycleServiceState extends State<MotorcycleService> {
                                                       TextStyle(fontSize: 15)),
                                             ),
                                           ),
+                                          Container(
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                'Rp. 50,000',
+                                                style: TextStyle(fontSize: 15),
+                                              ),
+                                            ),
+                                          )
                                         ],
                                       ))
                                 ],
@@ -127,7 +160,30 @@ class MotorcycleServiceState extends State<MotorcycleService> {
                           margin: EdgeInsets.only(top: 20),
                           child: InkWell(
                               onTap: () {
-                                print('Hello world');
+                                Alert(
+                                    context: context,
+                                    title: "Servis Mesin Berat",
+                                    content: Column(
+                                      children: <Widget>[
+                                        TextField(
+                                          decoration: InputDecoration(
+                                            icon: Icon(Icons.star),
+                                            labelText: 'Plat Nomor',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    buttons: [
+                                      DialogButton(
+                                        onPressed: () => Navigator.pop(context),
+                                        child: Text(
+                                          "Order",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20),
+                                        ),
+                                      )
+                                    ]).show();
                               },
                               child: Row(
                                 children: [
@@ -155,9 +211,19 @@ class MotorcycleServiceState extends State<MotorcycleService> {
                                           Container(
                                             child: Align(
                                               alignment: Alignment.centerLeft,
-                                              child: Text('On Site',
-                                                  style:
-                                                      TextStyle(fontSize: 15)),
+                                              child: Text(
+                                                'On Site',
+                                                style: TextStyle(fontSize: 15),
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                'Rp. 200,000',
+                                                style: TextStyle(fontSize: 15),
+                                              ),
                                             ),
                                           ),
                                         ],
@@ -179,7 +245,30 @@ class MotorcycleServiceState extends State<MotorcycleService> {
                           margin: EdgeInsets.only(top: 20),
                           child: InkWell(
                               onTap: () {
-                                print('Hello world');
+                                Alert(
+                                    context: context,
+                                    title: "Gnati Van Belt",
+                                    content: Column(
+                                      children: <Widget>[
+                                        TextField(
+                                          decoration: InputDecoration(
+                                            icon: Icon(Icons.star),
+                                            labelText: 'Plat Nomor',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    buttons: [
+                                      DialogButton(
+                                        onPressed: () => Navigator.pop(context),
+                                        child: Text(
+                                          "Order",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20),
+                                        ),
+                                      )
+                                    ]).show();
                               },
                               child: Row(
                                 children: [
@@ -208,6 +297,14 @@ class MotorcycleServiceState extends State<MotorcycleService> {
                                             child: Align(
                                               alignment: Alignment.centerLeft,
                                               child: Text('Delivery',
+                                                  style:
+                                                      TextStyle(fontSize: 15)),
+                                            ),
+                                          ),
+                                          Container(
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text('Rp. 80,000',
                                                   style:
                                                       TextStyle(fontSize: 15)),
                                             ),

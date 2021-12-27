@@ -93,10 +93,11 @@ class OrderListState extends State<OrderListPage> {
                 ]),
             child: InkWell(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (BuildContext context) {
-                    return OrderHistoryDetail();
-                  }));
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return OrderHistoryDetail();
+                    },
+                  ));
                 },
                 child: Row(
                   children: [
