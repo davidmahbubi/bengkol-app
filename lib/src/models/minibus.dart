@@ -1,17 +1,19 @@
 import 'package:bengkol_app/src/models/vehicle.dart';
 import 'package:flutter/cupertino.dart';
 
-class Motor extends Vehicle {
-  Motor(BuildContext context) : super(context);
+class Minibus extends Vehicle {
+  Minibus(BuildContext context) : super(context);
   
   void gantiOli() {}
+
+  void serviceRutin() {}
 
   void isiBahanbakar() {}
 
   void pompaBan() {}
 
-  void macet() {}
+  void ketokMagic() {}
 
-
+  void derek() {}
   
 }
