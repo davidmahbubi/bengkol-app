@@ -14,9 +14,9 @@ class NearbyRepairShopState extends State<NearbyRepairShopPage> {
 
   bool isLoading = true;
   List nearbyRepairShop = [
-    [Icons.place, '350m', 'Bengkel "Abadi"', "Jln. Gajah Mada No. 9, Banyuwangi", '08:00 - 20:00'],
-    [Icons.place, '400m', 'Bengkel Jaya', "Jln. Siliwangi No. 10, Banyuwangi", '09:30 - 17:00'],
-    [Icons.place, '1.2 km', 'Bengkel Sentosa', "Jln. Pattimura No. 1, Banyuwangi", '09:30 - 17:00'],
+    [Icons.place, '350m', 'Cabang Rogojampi', "Jln. Gajah Mada No. 9, Banyuwangi", '08:00 - 20:00'],
+    [Icons.place, '400m', 'Cabang Srono', "Jln. Siliwangi No. 10, Banyuwangi", '09:30 - 17:00'],
+    [Icons.place, '1.2 km', 'Cabang Kabat', "Jln. Pattimura No. 1, Banyuwangi", '09:30 - 17:00'],
   ];
 
   initState() {

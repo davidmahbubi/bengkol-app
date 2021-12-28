@@ -1,6 +1,12 @@
+import './../../models/order/order.dart';
 import 'package:flutter/material.dart';
 
 class OrderHistoryDetail extends StatelessWidget {
+
+  Order order;
+
+  OrderHistoryDetail(this.order);
+
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -26,35 +32,7 @@ class OrderHistoryDetail extends StatelessWidget {
                       height: 5.0,
                     ),
                     Text(
-                      '05-12-2021',
-                      style: TextStyle(
-                        fontSize: 14.0,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Card(
-              child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Jenis Kendaraan',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5.0,
-                    ),
-                    Text(
-                      'Mobil',
+                      order.tanggal.toLocal().toString(),
                       style: TextStyle(
                         fontSize: 14.0,
                         color: Colors.grey,
@@ -82,7 +60,7 @@ class OrderHistoryDetail extends StatelessWidget {
                       height: 5.0,
                     ),
                     Text(
-                      'P 0152 AG',
+                      order.nomorPlat,
                       style: TextStyle(
                         fontSize: 14.0,
                         color: Colors.grey,
@@ -110,7 +88,7 @@ class OrderHistoryDetail extends StatelessWidget {
                       height: 5.0,
                     ),
                     Text(
-                      'Tambal Ban',
+                      order.namaLayanan,
                       style: TextStyle(
                         fontSize: 14.0,
                         color: Colors.grey,
@@ -138,7 +116,7 @@ class OrderHistoryDetail extends StatelessWidget {
                       height: 5.0,
                     ),
                     Text(
-                      'Rp. 150,000',
+                      order.harga.toString(),
                       style: TextStyle(
                         fontSize: 14.0,
                         color: Colors.grey,
@@ -166,11 +144,11 @@ class OrderHistoryDetail extends StatelessWidget {
                       height: 5.0,
                     ),
                     Text(
-                      'Sukses',
+                      order.status,
                       style: TextStyle(
                         fontSize: 14.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.green,
+                        color: order.status == 'Success' ? Colors.green : Colors.orange,
                       ),
                     ),
                   ],

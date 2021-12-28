@@ -1,3 +1,4 @@
+import 'package:bengkol_app/src/models/order/riwayat_order.dart';
 import 'package:bengkol_app/src/pages/oder/order_history_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,6 +12,9 @@ class OrderListPage extends StatefulWidget {
 }
 
 class OrderListState extends State<OrderListPage> {
+
+  int loopIndex = 0;
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -19,10 +23,11 @@ class OrderListState extends State<OrderListPage> {
       body: ListView(
         children: [
           Container(
-            margin: EdgeInsets.symmetric(vertical: 30),
-            child: SvgPicture.asset('assets/images/thought.svg', height: 200),
-          ),
-          Container(
+              margin: EdgeInsets.symmetric(vertical: 30),
+              child: SvgPicture.asset('assets/images/thought.svg', height: 200),
+            ),
+          ...RiwayatOrder.riwayatOrder.reversed.map((val) {
+            return Container(
             margin: EdgeInsets.only(top: 20, left: 15, right: 15),
             padding: EdgeInsets.all(18),
             width: double.infinity,
@@ -40,7 +45,7 @@ class OrderListState extends State<OrderListPage> {
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (BuildContext context) {
-                    return OrderHistoryDetail();
+                    return OrderHistoryDetail(val);
                   }));
                 },
                 child: Row(
@@ -58,7 +63,7 @@ class OrderListState extends State<OrderListPage> {
                             Container(
                               child: Align(
                                 alignment: Alignment.centerLeft,
-                                child: Text('Tambal Ban',
+                                child: Text(val.namaLayanan,
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
@@ -68,71 +73,17 @@ class OrderListState extends State<OrderListPage> {
                             Container(
                               child: Align(
                                 alignment: Alignment.centerLeft,
-                                child: Text('21 September 2020',
-                                    style: TextStyle(fontSize: 15)),
+                                child: Text(val.tanggal.toLocal().toString(),
+                                    style: TextStyle(fontSize: 15)
+                                ),
                               ),
                             ),
                           ],
                         ))
                   ],
                 )),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 20, left: 15, right: 15),
-            padding: EdgeInsets.all(18),
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey.withOpacity(0.15),
-                      spreadRadius: 3,
-                      blurRadius: 3,
-                      offset: Offset(0, 3))
-                ]),
-            child: InkWell(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return OrderHistoryDetail();
-                    },
-                  ));
-                },
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        FaIcon(FontAwesomeIcons.car, size: 35),
-                      ],
-                    ),
-                    Container(
-                        margin: EdgeInsets.only(left: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text('Isi Bahan Bakar',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    )),
-                              ),
-                            ),
-                            Container(
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text('23 September 2020',
-                                    style: TextStyle(fontSize: 15)),
-                              ),
-                            ),
-                          ],
-                        ))
-                  ],
-                )),
-          )
+          );
+          }).toList(),
         ],
       ),
     );
