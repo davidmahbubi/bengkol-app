@@ -10,4 +10,8 @@ class ServiceMobil extends Layanan {
         ], tipeLayanan, nomorPlat) {
     sop += sop;
   }
+
+  abstract class serviceKampasKopling {
+    void serviceKampasKopling(); {}
+  }
 }
