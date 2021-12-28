@@ -13,19 +13,18 @@ class ServiceMobilMatic extends ServiceMobil {
         ], Layanan.SERVICE_MOBIL_MATIC, nomorPlat ?? '');
 
   void servisRoler(int index) {
-    print('Servis Roler untuk mobil matic');
-    tambahkanLayananKeListOrder(this, 'Servis Roler Mobil Matic', 100000, index);
+    tambahkanLayananKeListOrder(
+        this, 'Servis Roler Mobil Matic', 100000, index);
   }
 
   void servisVBelt(int index) {
-    print('Servis V-Belt untuk mobil matic');
-    tambahkanLayananKeListOrder(this, 'Servis V-Belt Mobil Matic', 150000, index);
+    tambahkanLayananKeListOrder(
+        this, 'Servis V-Belt Mobil Matic', 150000, index);
   }
 
-  @override 
-    void servisKampasKopling(int index) {
-    print('Servis Kampas Kopling untuk mobil matic');
-    tambahkanLayananKeListOrder(this, 'Servis Kampas Kopling Mobil Matic', 150000, index);
+  @override
+  void servisKampasKopling(int index) {
+    tambahkanLayananKeListOrder(
+        this, 'Servis Kampas Kopling Mobil Matic', 150000, index);
   }
-
 }
