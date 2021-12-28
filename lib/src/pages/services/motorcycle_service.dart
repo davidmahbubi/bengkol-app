@@ -14,7 +14,6 @@ class MotorcycleService extends StatefulWidget {
 }
 
 class MotorcycleServiceState extends State<MotorcycleService> {
-
   String? jenisTransmisi = 'Automatic';
 
   ServiceMotorGigi motorGigiService = ServiceMotorGigi(null);
@@ -42,165 +41,192 @@ class MotorcycleServiceState extends State<MotorcycleService> {
       ),
       body: ListView(
         children: [
-          Icon(
+          const Icon(
             Icons.motorcycle,
             size: 150,
           ),
-          Align(
+          const Align(
             alignment: Alignment.center,
-            child: Text('Pilih Layanan Servis',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+            child: Text(
+              'Pilih Layanan Servis',
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            ),
           ),
           Form(
-              child: Container(
-                  margin: EdgeInsets.only(left: 20, right: 20, top: 30),
-                  child: Column(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        child: InputDecorator(
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(10),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                            ),
-                            child: DropdownButtonHideUnderline(
-                                child: DropdownButton(
-                                    borderRadius: BorderRadius.circular(10),
-                                    value: jenisTransmisi,
-                                    hint: Text('Tipe Motor'),
-                                    isExpanded: true,
-                                    items: [
-                                      'Automatic',
-                                      'Manual',
-                                    ].map((e) {
-                                      return DropdownMenuItem<String>(
-                                          value: e, child: Text(e));
-                                    }).toList(),
-                                    onChanged: (String? item) {
-                                      setState(() {
-                                        jenisTransmisi = item;
-                                      });
-                                    }))),
+            child: Container(
+              margin: EdgeInsets.only(left: 20, right: 20, top: 30),
+              child: Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    child: InputDecorator(
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
-                      ...motorcycleServices[jenisTransmisi == 'Automatic' ? 'automatic' : 'manual'].map((val) {
-                        return Container(
-                          padding: EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.grey.withOpacity(0.15),
-                                  spreadRadius: 3,
-                                  blurRadius: 3,
-                                  offset: Offset(0, 3))
-                            ]
-                          ),
-                          margin: EdgeInsets.only(top: 20),
-                          child: InkWell(
-                              onTap: () {
-                                Alert(
-                                    context: context,
-                                    title: val[0],
-                                    content: Column(
-                                      children: <Widget>[
-                                        TextField(
-                                          controller: nomorPlatInputController,
-                                          decoration: InputDecoration(
-                                            icon: Icon(Icons.star),
-                                            labelText: 'Plat Nomor',
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    buttons: [
-                                      DialogButton(
-                                        onPressed: () {
-                                          if (jenisTransmisi == 'Automatic') {
-                                            motorMaticService.nomorPlat = nomorPlatInputController.text;
-                                          } else {
-                                            motorGigiService.nomorPlat = nomorPlatInputController.text;
-                                          }
-                                          switch (val[3]) {
-                                            case 'service_injeksi_manual':
-                                                motorGigiService.servisInjeksi(RiwayatOrder.getLatestIndex());
-                                            break;
-                                            case 'service_gigi_manual':
-                                                motorGigiService.servisGigi(RiwayatOrder.getLatestIndex());
-                                            break;
-                                            case 'service_rantai_manual':
-                                                motorGigiService.servisRantai(RiwayatOrder.getLatestIndex());
-                                            break;
-                                            case 'service_injeksi_matic':
-                                                motorMaticService.servisInjeksi(RiwayatOrder.getLatestIndex());
-                                            break;
-                                            case 'service_cvt_matic':
-                                                motorMaticService.servisCvt(RiwayatOrder.getLatestIndex());
-                                            break;
-                                            case 'service_vbelt_matic':
-                                                motorMaticService.servisVbelt(RiwayatOrder.getLatestIndex());
-                                            break;
-                                          }
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                          "Order",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 20),
-                                        ),
-                                      )
-                                    ]).show();
-                              },
-                              child: Row(
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton(
+                          borderRadius: BorderRadius.circular(10),
+                          value: jenisTransmisi,
+                          hint: Text('Tipe Motor'),
+                          isExpanded: true,
+                          items: [
+                            'Automatic',
+                            'Manual',
+                          ].map((e) {
+                            return DropdownMenuItem<String>(
+                              value: e,
+                              child: Text(e),
+                            );
+                          }).toList(),
+                          onChanged: (String? item) {
+                            setState(() {
+                              jenisTransmisi = item;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  ...motorcycleServices[jenisTransmisi == 'Automatic'
+                          ? 'automatic'
+                          : 'manual']
+                      .map((val) {
+                    return Container(
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.withOpacity(0.15),
+                              spreadRadius: 3,
+                              blurRadius: 3,
+                              offset: Offset(0, 3))
+                        ],
+                      ),
+                      margin: EdgeInsets.only(top: 20),
+                      child: InkWell(
+                        onTap: () {
+                          Alert(
+                            context: context,
+                            title: val[0],
+                            content: Column(
+                              children: <Widget>[
+                                TextField(
+                                  controller: nomorPlatInputController,
+                                  decoration: InputDecoration(
+                                    icon: Icon(Icons.star),
+                                    labelText: 'Plat Nomor',
+                                  ),
+                                ),
+                              ],
+                            ),
+                            buttons: [
+                              DialogButton(
+                                onPressed: () {
+                                  if (jenisTransmisi == 'Automatic') {
+                                    motorMaticService.nomorPlat =
+                                        nomorPlatInputController.text;
+                                  } else {
+                                    motorGigiService.nomorPlat =
+                                        nomorPlatInputController.text;
+                                  }
+                                  switch (val[3]) {
+                                    case 'service_injeksi_manual':
+                                      motorGigiService.servisInjeksi(
+                                          RiwayatOrder.getLatestIndex());
+                                      break;
+                                    case 'service_gigi_manual':
+                                      motorGigiService.servisGigi(
+                                          RiwayatOrder.getLatestIndex());
+                                      break;
+                                    case 'service_rantai_manual':
+                                      motorGigiService.servisRantai(
+                                          RiwayatOrder.getLatestIndex());
+                                      break;
+                                    case 'service_injeksi_matic':
+                                      motorMaticService.servisInjeksi(
+                                          RiwayatOrder.getLatestIndex());
+                                      break;
+                                    case 'service_cvt_matic':
+                                      motorMaticService.servisCvt(
+                                          RiwayatOrder.getLatestIndex());
+                                      break;
+                                    case 'service_vbelt_matic':
+                                      motorMaticService.servisVbelt(
+                                          RiwayatOrder.getLatestIndex());
+                                      break;
+                                  }
+                                  Navigator.pop(context);
+                                },
+                                child: Text(
+                                  "Order",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ).show();
+                        },
+                        child: Row(
+                          children: [
+                            Column(
+                              children: [Icon(Icons.settings, size: 40)],
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                left: 20,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Column(
-                                    children: [Icon(Icons.settings, size: 40)],
+                                  Container(
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        val[0],
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                   Container(
-                                      margin: EdgeInsets.only(
-                                        left: 20,
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        val[1],
+                                        style: TextStyle(fontSize: 15),
                                       ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            child: Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(val[0],
-                                                  style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.bold,
-                                                  )),
-                                            ),
-                                          ),
-                                          Container(
-                                            child: Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(val[1],
-                                                  style:
-                                                      TextStyle(fontSize: 15)),
-                                            ),
-                                          ),
-                                          Container(
-                                            child: Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(val[2], style: TextStyle(fontSize: 15)),
-                                            ),
-                                          )
-                                        ],
-                                      )
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        val[2],
+                                        style: TextStyle(fontSize: 15),
+                                      ),
+                                    ),
                                   )
                                 ],
-                              )
+                              ),
                             )
-                        );
-                      }).toList(),
-                  ],
-                ))
-            )
+                          ],
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
