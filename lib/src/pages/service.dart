@@ -27,74 +27,79 @@ class ServiceState extends State<ServicePage> {
           Column(
             children: [
               Container(
-                  margin: EdgeInsets.only(top: 20, bottom: 20),
-                  child: Column(
-                    children: [
-                      SvgPicture.asset('assets/images/car.svg', height: 200),
-                      Container(
-                        margin: EdgeInsets.only(top: 25),
-                        child: Text('Pilih Tipe Kendaraan Anda',
-                            style: TextStyle(
-                                fontSize: 22, fontWeight: FontWeight.bold)),
-                      )
-                    ],
-                  )),
+                margin: EdgeInsets.only(top: 20, bottom: 20),
+                child: Column(
+                  children: [
+                    SvgPicture.asset('assets/images/car.svg', height: 200),
+                    Container(
+                      margin: EdgeInsets.only(top: 25),
+                      child: Text('Pilih Tipe Kendaraan Anda',
+                          style: TextStyle(
+                              fontSize: 22, fontWeight: FontWeight.bold)),
+                    )
+                  ],
+                ),
+              ),
               Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: Scrollbar(
-                    thickness: 3,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10.0),
-                      child: SingleChildScrollView(
-                        physics: BouncingScrollPhysics(),
-                        child: Column(
-                          children: [
-                            GridView.builder(
-                              shrinkWrap: true,
-                              physics: BouncingScrollPhysics(),
-                              itemCount: vehicleTypes.length,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                      childAspectRatio: 1,
-                                      crossAxisCount: 2,
-                                      crossAxisSpacing: 4.0,
-                                      mainAxisSpacing: 4.0),
-                              itemBuilder: (BuildContext context, int index) {
-                                return Card(
-                                  elevation: 0.2,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8.0)),
-                                  child: InkWell(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        vehicleTypes[index][0],
-                                        SizedBox(height: 20),
-                                        Text(
-                                          vehicleTypes[index][1],
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              color: Colors.black87),
-                                        )
-                                      ],
-                                    ),
-                                    onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => vehicleTypes[index][2]),
-                                      );
-                                    },
+                margin: EdgeInsets.only(top: 20),
+                child: Scrollbar(
+                  thickness: 3,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    child: SingleChildScrollView(
+                      physics: BouncingScrollPhysics(),
+                      child: Column(
+                        children: [
+                          GridView.builder(
+                            shrinkWrap: true,
+                            physics: BouncingScrollPhysics(),
+                            itemCount: vehicleTypes.length,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    childAspectRatio: 1,
+                                    crossAxisCount: 2,
+                                    crossAxisSpacing: 4.0,
+                                    mainAxisSpacing: 4.0),
+                            itemBuilder: (BuildContext context, int index) {
+                              return Card(
+                                elevation: 0.2,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0)),
+                                child: InkWell(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      vehicleTypes[index][0],
+                                      SizedBox(height: 20),
+                                      Text(
+                                        vehicleTypes[index][1],
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.black87),
+                                      )
+                                    ],
                                   ),
-                                );
-                              },
-                            ),
-                          ],
-                        ),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              vehicleTypes[index][2]),
+                                    );
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ),
-                  ))
+                  ),
+                ),
+              )
             ],
           )
         ],
