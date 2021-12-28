@@ -1,7 +1,7 @@
 import 'package:bengkol_app/src/models/services/layanan.dart';
 import 'package:bengkol_app/src/models/services/service_motor_gigi.dart';
 
-class ServiceMobil extends Layanan {
+ abstract class ServiceMobil extends Layanan {
   ServiceMobil(List<String> sop, String tipeLayanan, String nomorPlat)
       : super([
           'Pemeriksaan suspensi depan dan belakang',
@@ -11,7 +11,6 @@ class ServiceMobil extends Layanan {
     sop += sop;
   }
 
-  abstract class serviceKampasKopling {
-    void serviceKampasKopling(); {}
+    void serviceKampasKopling();
   }
 }
