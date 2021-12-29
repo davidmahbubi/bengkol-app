@@ -1,5 +1,5 @@
 import 'package:bengkol_app/src/models/order/riwayat_order.dart';
-import 'package:bengkol_app/src/pages/oder/order_history_detail.dart';
+import 'package:bengkol_app/src/pages/order/order_history_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_svg/flutter_svg.dart';
